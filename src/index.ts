@@ -1,4 +1,4 @@
-import { GoogleSpreadsheet, GoogleSpreadsheetWorksheet, WorksheetGridRange, PaginationOptions } from "google-spreadsheet";
+import { GoogleSpreadsheet, GoogleSpreadsheetWorksheet, WorksheetGridRange } from "google-spreadsheet";
 
 import { Table } from "./table";
 
@@ -18,14 +18,18 @@ interface Attributes {
     primaryKey?: boolean;
     autoIncrement?: boolean;
     allowNull?: boolean;
-    defaultValue?: any;
     unique?: boolean;
+    references?: {
+      model: string;
+      key: string;
+    };
   };
 }
 
 interface Tables {
   [key: string] : Table 
 }
+
 
 export class Database {
   public spreadsheetId: string;
@@ -80,7 +84,7 @@ export class Database {
       database: this
     }
   ) {
-    const table = class extends Table {};
+    const table = new class extends Table {};
     await table.init(attributes, options);
     this.tables[tableName] = table;
     return table;

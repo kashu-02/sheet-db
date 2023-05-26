@@ -1,6 +1,7 @@
 import { GoogleSpreadsheetWorksheet, WorksheetGridRange } from "google-spreadsheet";
 
 import { Database } from "../index";
+import { Table } from "table";
 
 interface Options {
   tableName: string;
@@ -13,8 +14,11 @@ interface Attributes {
     primaryKey?: boolean;
     autoIncrement?: boolean;
     allowNull?: boolean;
-    defaultValue?: any;
     unique?: boolean;
+    references?: {
+      model: string;
+      key: string;
+    };
   };
 }
 

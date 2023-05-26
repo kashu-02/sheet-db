@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@types/google-spreadsheet": "^3.3.0",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "google-spreadsheet": "^3.3.0",
     "googleapis": "^110.0.0"
